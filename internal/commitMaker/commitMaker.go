@@ -37,9 +37,12 @@ func (m Maker) MakeCommit(commitDescription string) error {
 	}
 
 	cmd = exec.Command("git", "commit", "-m", commitDescription)
-	if err := cmd.Run(); err != nil {
+	out, err := cmd.Output()
+	if err != nil {
 		return err
 	}
+
+	fmt.Println(string(out))
 
 	cmd = exec.Command("git", "push")
 	if err := cmd.Run(); err != nil {
