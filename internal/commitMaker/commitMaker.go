@@ -6,6 +6,8 @@ import (
 	"os/exec"
 )
 
+// Make commit
+
 type Maker struct {
 	commit *commitReader.Commit
 }
