@@ -1,6 +1,7 @@
 package commitMaker
 
 import (
+	"errors"
 	"fmt"
 	"gocommiter/internal/commitReader"
 	"os/exec"
@@ -16,6 +17,10 @@ func NewCommitMaker() (Maker, error) {
 	commit, err := commitReader.NewCommit()
 	if err != nil {
 		return Maker{}, err
+	}
+
+	if commit.ModifyFiles == nil && &commit.ModifyFilesData == nil {
+		return Maker{}, errors.New("")
 	}
 
 	return Maker{commit: commit}, nil
