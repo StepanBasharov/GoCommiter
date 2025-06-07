@@ -20,7 +20,7 @@ func NewCommitMaker() (Maker, error) {
 	}
 
 	if commit.ModifyFiles == nil && &commit.ModifyFilesData == nil {
-		return Maker{}, errors.New("")
+		return Maker{}, errors.New("nothing to commit")
 	}
 
 	return Maker{commit: commit}, nil
